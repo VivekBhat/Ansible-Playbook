@@ -4,7 +4,7 @@
 
 Here I have created 2 ansible playbooks that can be used to:
 
-**Playbook 1 ([Playbook Ansible.yml](https://github.com/VivekBhat/Ansible-Playbook/blob/master/Plays/Playbook%20AWS%20EC2.yml)):**  
+**Playbook 1 ([Playbook Ansible.yml](https://github.com/VivekBhat/Ansible-Playbook/blob/master/Plays/Playbook%20Ansible.yml)):**  
 * **Setup:** Install the following items:
     * Install node.js
     * Install forever
@@ -20,7 +20,7 @@ Here I have created 2 ansible playbooks that can be used to:
  
 ---
 
-**Playbook 2 (Playbook AWS EC2.yml):**
+**Playbook 2 ([Playbook AWS EC2.yml](https://github.com/VivekBhat/Ansible-Playbook/blob/master/Plays/Playbook%20AWS%20EC2.yml)):**
 * **Provision:** 
     A new virtual machine from a virtual machine provider Amazon EC2 is provisioned.
 
