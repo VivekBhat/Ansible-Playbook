@@ -4,7 +4,7 @@
 
 Here I have created 2 ansible playbooks that can be used to:
 
-**Playbook 1 (Playbook Ansible.yml):**  
+**Playbook 1 ([Playbook Ansible.yml](https://github.com/VivekBhat/Ansible-Playbook/blob/master/Plays/Playbook%20AWS%20EC2.yml)):**  
 * **Setup:** Install the following items:
     * Install node.js
     * Install forever
