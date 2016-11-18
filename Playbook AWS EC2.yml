@@ -1,0 +1,22 @@
+---
+ - name: create a new keypair
+   hosts: node0
+   vars: 
+     keypair: id_rsa
+     instance_type: t2.micro
+     image: ami-a9d276c9
+     region: us-west-2 
+   tasks:
+    - name: Launch EC2 Instance
+      ec2:
+        key_name: "{{keypair}}"
+        instance_type: "{{instance_type}}"
+        image: "{{image}}"
+        wait: true
+        region: "{{region}}"
+        aws_access_key: abcdefghijk12345
+        aws_secret_key: sdvkjsdvefpqwdqwndpqwnscbqwfqwfpqwf
+      register: ec2
+    
+    - name: Print All EC2 variables
+      debug: var=ec2
