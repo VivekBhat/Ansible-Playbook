@@ -1,0 +1,50 @@
+---
+ - name: "=====: VIVEK's PLAYBOOK :====="
+   hosts: node0
+   become: yes
+   tasks:
+    - name: INSTALL NPM AND NODE.JS 
+      apt: name={{item}} state=installed 
+      with_items:
+       - npm
+       - nodejs
+       - nodejs-legacy
+
+    - name: Installing | GIT
+      apt: name=git state=installed 
+
+    - name: EXPORT PATH IF ERROR
+      shell: export PATH=$PATH:/usr/bin
+    
+    - name: "Installing NPM package: FOREVER (to run Node.js app)."
+      npm: name=forever global=yes state=present 
+
+    - name: "Check list of Node.js apps running."
+      command: forever list
+      register: forever_list
+      changed_when: false
+    
+    - name: See Console
+      debug: var=forever_list.stdout_lines
+    
+    - name: GIT | Cloning CSC-DevOps Repo 
+      git: repo=git://github.com/CSC-DevOps/App.git  dest=/srv/DevOps clone=yes update=yes
+
+    - name: "Install NPM Packages"
+      npm: path=/srv/DevOps state=latest
+    
+    - name: "Run app: forever start main.js"
+      command: forever start /srv/DevOps/main.js
+      when: "forever_list.stdout.find('/srv/DevOps/main.js') == -1"
+
+    - name: Security update
+      apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=latest
+      with_items:
+       - bash
+       - openssh-server
+       - openssh-client
+       - openssl
+       
+    - name: Clean /tmp*
+      file: path=/tmp state=absent
+    
