@@ -1,5 +1,5 @@
 
-# HW5 - Configuration Management
+# Configuration Management
   The goal of this project is to demonstrate how to use ansible to help us configure software. 
 
 Here I have created 2 ansible playbooks that can be used to:
