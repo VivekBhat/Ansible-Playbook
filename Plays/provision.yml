@@ -36,3 +36,14 @@
      host: "{{ec2_instances.instances[0].public_ip}}"
      port: 22 
      state: started
+  - name: Setup
+    hosts: ec2_instance
+    sudo: yes
+    
+    vars:
+     - home_dir: /home/ubuntu
+     - app_dir: App
+     - temp_dir: /tmp/
+   
+   
+   
