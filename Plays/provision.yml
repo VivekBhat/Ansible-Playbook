@@ -1,0 +1,25 @@
+- name: Provision
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Install boto
+    sudo: yes
+    pip: name=boto
+
+  - name: Create ec2 instance
+    ec2: 
+     aws_access_key: abcdefghijklmniopqrstuvwxyz
+     aws_secret_key: a235bcd1ef35ghij43klmniop12qrst56uvwxyz
+     key_name: bonus
+     instance_type: t2.micro
+     region: us-east-1
+     image: ami-c8580bdf
+     wait: yes
+     group_id: sg-3c29a841
+     vpc_subnet_id: subnet-5d92d677
+     assign_public_ip: yes
+     wait_timeout: 600
+     count: 1
+     instance_tags:
+      Name: "bonus"
+    register: ec2_instances
