@@ -31,3 +31,8 @@
      ansible_ssh_user: ubuntu
      ansible_ssh_private_key_file: ./bonus.pem
 
+  - name: Wait for port 22
+    wait_for: 
+     host: "{{ec2_instances.instances[0].public_ip}}"
+     port: 22 
+     state: started
